@@ -1,14 +1,14 @@
 # АНАЛИЗ ДАННЫХ И ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ [in GameDev]
 Отчет по лабораторной работе #1 выполнил(а):
-- Иванова Ивана Варкравтовна
-- РИ000024
+- Давидчук Никита Олегович
+- 2026564
 Отметка о выполнении заданий (заполняется студентом):
 
 | Задание | Выполнение | Баллы |
 | ------ | ------ | ------ |
-| Задание 1 | # | 60 |
-| Задание 2 | # | 20 |
-| Задание 3 | # | 20 |
+| Задание 1 | * | 60 |
+| Задание 2 | * | 20 |
+| Задание 3 | * | 20 |
 
 знак "*" - задание выполнено; знак "#" - задание не выполнено;
 
@@ -40,90 +40,82 @@
 ## Задание 1
 ### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
 Ход работы:
-- Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
+1. Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
 
-```py
+![image](https://user-images.githubusercontent.com/20085792/192367843-19f7097b-eed8-4bf2-afc5-cba601443404.png)
 
-In [ ]:
-#Import the required modules, numpy for calculation, and Matplotlib for drawing
-import numpy as np
-import matplotlib.pyplot as plt
-#This code is for jupyter Notebook only
-%matplotlib inline
+2. Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
 
-# define data, and change list to array
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
+![image](https://user-images.githubusercontent.com/20085792/192367872-261162bd-8422-43c9-85fc-2a45d73ad2cb.png)
 
-#Show the effect of a scatter plot
-plt.scatter(x,y)
+3. Начать итерацию
+- Шаг 1 Инициализация и модель итеративной оптимизации.
 
-```
+![image](https://user-images.githubusercontent.com/20085792/192368128-24d4458e-d872-4ee3-b008-a85191b7d94b.png)
 
-- Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
+- Шаг 2 На второй итерации отображаются значения параметров, значения.
+
+![image](https://user-images.githubusercontent.com/20085792/192368267-1f3b78c6-7863-46af-81c7-64404271c941.png)
+
+- Шаг 3 Третья итерация показывает значения параметров, значения потерь и визуализацию после итерации.
+
+![image](https://user-images.githubusercontent.com/20085792/192368299-2dcc9ddc-1b6a-4fb0-bcce-1fce1d95ec38.png)
+
+- Шаг 4 На четвертой итерации отображаются значения параметров, значения потерь и эффекты визуализации.
+
+![image](https://user-images.githubusercontent.com/20085792/192368314-3a3be87a-e2bf-4350-8b9b-56b9844a8f89.png)
+
+- Шаг 5 Пятая итерация показывает значение параметра, значение потерь и эффект визуализации после итерации.
+
+![image](https://user-images.githubusercontent.com/20085792/192368350-3f865c63-ea2f-4b9d-9348-d1a07d47c8e1.png)
+
+- Шаг 6 10000-я итерация, показывающая значения параметров, потери и визуализацию после итерации.
+
+![image](https://user-images.githubusercontent.com/20085792/192368373-dc63e25f-4d90-4622-99e0-13ff317db4e4.png)
 
 
 ## Задание 2
 ### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+При увеличении итераций в текущей модели величина **loss** должна стремиться к нулю, поскольку **loss** показывает количество ошибок/значение ошибки после определенного числа итераций относительно данных в выборке. Чем меньше loss, тем меньше ошибка, и, соответственно, точнее модель на обучающей выборке.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+- Обновленные данные на выборку
 
-```py
+![image](https://user-images.githubusercontent.com/20085792/192370033-ea31b183-0cb0-46b6-8cb0-89ef307e33b1.png)
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+- Первая итерация
 
-```
+![image](https://user-images.githubusercontent.com/20085792/192370138-c60b3685-b2c0-4686-bb8b-fe0ea67ae2d0.png)
+
+- 10000-ая итерация
+
+![image](https://user-images.githubusercontent.com/20085792/192370165-8cfbdf06-b5a2-403e-989b-3c0f51fc3b86.png)
 
 ## Задание 3
 ### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+Lr (Learning rate) - коэффициент обучения модели. Чем выше коэффициент обучения (шаг обучения), тем быстрее модель приходит к более точному результату и тем меньше функция потерь (loss). Так происходит далеко не всегда и не везде, но в качестве модели, которая используется в этом задании, такое понятие допустимо.
 
-```py
+- Шаг 1. `lr = .000001`
+  - Первая итерация
+  
+  ![image](https://user-images.githubusercontent.com/20085792/192368128-24d4458e-d872-4ee3-b008-a85191b7d94b.png)
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+  - 10000-ая итерация
+  
+  ![image](https://user-images.githubusercontent.com/20085792/192368373-dc63e25f-4d90-4622-99e0-13ff317db4e4.png)
 
-```
+- Шаг 2. `lr = .0005`
+  - Первая итерация
+  
+  ![image](https://user-images.githubusercontent.com/20085792/192371415-892b7da4-608d-4d82-b009-bb73220bf26d.png)
+
+  - 10000-ая итерация
+  
+  ![image](https://user-images.githubusercontent.com/20085792/192371492-99a1a2fc-c06c-4543-a55c-5560b44fd302.png)
 
 ## Выводы
 
-Абзац умных слов о том, что было сделано и что было узнано.
+Ничего нового я не узнал, работал с этим и раньше.
 
 | Plugin | README |
 | ------ | ------ |
